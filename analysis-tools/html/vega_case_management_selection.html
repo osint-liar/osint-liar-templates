@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html lang="en">
+  <head>
+    <title>Vega Case Management Selection</title>
+
+    <script type="text/javascript" src="http://127.0.0.1:9906/static/js/vega.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:9906/static/js/vega-lite.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:9906/static/js/vega-embed.js"></script>
+
+    <script type="text/javascript">
+          async function fetchData()
+          {
+                const urlParams = new URLSearchParams(window.location.search);
+                const uuid = urlParams.get('Uuid')
+                const authToken = urlParams.get('AuthToken')
+                const response = await fetch(`http://127.0.0.1:9906/v1/case-management`, {
+                  headers: {'Authorization': `Bearer ${authToken.replace(/ /g, '+')}`}, 'Content-Type': 'application/json'})
+                const data = await response.json()
+                const select = document.getElementById("caseManagement")
+                data.Records.forEach(caseManagement =>{
+                  const el = document.createElement("option")
+                  el.textContent = caseManagement.Name
+                  el.value = caseManagement.Uuid
+                  select.appendChild(el)
+                })
+
+                // add on change listener to trigger data change
+                document.getElementById('caseManagement').onchange = function() {
+                    const uuid = document.getElementById("caseManagement").value
+                };
+                select.value = data.Records[0].Uuid
+
+                const response2 = await fetch(`http://127.0.0.1:9906/v1/analysis-tool/get?Uuid=${uuid}`, {headers: {'Authorization': `Bearer ${authToken.replace(/ /g, '+')}`}, 'Content-Type': 'application/json'})
+                const data2 = await response2.json()
+                data2.Record.Specification.data[0].url = data2.Record.Specification.data[0].url.replace('{$Uuid}', uuid)
+                data2.Record.Specification.data[0].url = data2.Record.Specification.data[0].url.replace('{$AuthToken}', authToken.replace(/ /g, '+'))
+                data2.Record.Specification.data[0].url = data2.Record.Specification.data[0].url.replace('{$CaseManagementUuid}', select.value)
+                vegaEmbed('#vis', data2.Record.Specification, { actions: { source: false, compiled: false, editor: false }});
+                //document.getElementById('#vis').setAttribute('title', data2.Record.Description ?? '');
+
+                select.addEventListener("change", async(event) => {
+                  const response2 = await fetch(`http://127.0.0.1:9906/v1/analysis-tool/get?Uuid=${uuid}`, {headers: {'Authorization': `Bearer ${authToken.replace(/ /g, '+')}`}, 'Content-Type': 'application/json'})
+                  const data2 = await response2.json()
+                  data2.Record.Specification.data[0].url = data2.Record.Specification.data[0].url.replace('{$Uuid}', uuid)
+                  data2.Record.Specification.data[0].url = data2.Record.Specification.data[0].url.replace('{$AuthToken}', authToken.replace(/ /g, '+'))
+                  data2.Record.Specification.data[0].url = data2.Record.Specification.data[0].url.replace('{$CaseManagementUuid}', select.value)
+                  vegaEmbed('#vis', data2.Record.Specification, { actions: { source: false, compiled: false, editor: false }});
+                  //document.getElementById('#vis').setAttribute('title', data2.Record.Description ?? '');
+                });
+
+
+          }
+          fetchData()
+
+      </script>
+    </head>
+
+    <body>
+      <div id="caseManagementSelect">
+        <select name="caseManagement" id="caseManagement">
+            <option value="" disabled selected>Select</option>
+        </select>
+      </div>
+      <div id="vis"></div>
+      <div id="view"></div>
+  </body>
+</html>

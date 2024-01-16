@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Vega Chart IFrame",
+        "description": "Provides the HTML and Javascript for displaying Vega charts",
+        "url": "https://osint-liar.github.io/osint-liar-templates/analysis-tools/html/vega.html"
+    },
+    {
+        "title": "Unordered List",
+        "description": "Provides an unordered html list that is populated by Name and Value pairings.",
+        "url": "https://osint-liar.github.io/osint-liar-templates/analysis-tools/html/unordered_list.html"
+    },
+    {
+        "title": "Vega Case Management Selection",
+        "description": "Provides a drop down menu for selecting data per case in the UI.",
+        "url": "https://osint-liar.github.io/osint-liar-templates/analysis-tools/html/vega_case_management_selection.html"
+    },
+    {
+        "title": "Leaflet Map",
+        "description": "A simple leaflet example map.",
+        "url": "https://osint-liar.github.io/osint-liar-templates/analysis-tools/html/leaflet_map.html"
+    },
+    {
+        "title": "Time Line",
+        "description": "A simple timeline of events.",
+        "url": "https://osint-liar.github.io/osint-liar-templates/analysis-tools/html/time_line.html"
+    }
+]

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OSINT LIAR Analysis Tool</title>
+    <script src="https://unpkg.com/mustache@latest"></script>
+    <script type="text/javascript">
+        window.onload = (event) => {
+            const fetchData = async() => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const uuid = urlParams.get('Uuid')
+                const authToken = urlParams.get('AuthToken')
+                const response = await fetch(`http://127.0.0.1:9906/v1/analysis-tool/data-extract?Uuid=${uuid}`, {headers: {'Authorization': `Bearer ${authToken.replace(/ /g, '+')}`}, 'Content-Type': 'application/json'})
+                if(!response.ok)
+                {
+                    const template = document.getElementById('error').innerHTML;
+                    const rendered = Mustache.render(template, {});
+                    document.getElementById('target').innerHTML = rendered;
+                    return
+                }
+                const data = await response.json()
+
+                if(data.Count === 0){
+                    const template = document.getElementById('no_records').innerHTML;
+                    const rendered = Mustache.render(template, data);
+                    document.getElementById('target').innerHTML = rendered;
+                }
+                else
+                {
+                    const template = document.getElementById('template').innerHTML;
+                    const rendered = Mustache.render(template, data);
+                    document.getElementById('target').innerHTML = rendered;
+                }
+
+            };
+            fetchData();
+        };
+
+    </script>
+</head>
+<html>
+  <body>
+    <div id="target">Loading...</div>
+    <script id="template" type="x-tmpl-mustache">
+        <div title="{{Description}}">
+            <h3>{{Label}}</h3>
+            <ul>
+            {{#Records}}
+                <li>{{ Name }} - {{ Value }}</li>
+            {{/Records}}
+            </ul>
+        </div>
+    </script>
+    <script id="no_records" type="x-tmpl-mustache">
+        <div title="{{Description}}">
+            <h3>{{Label}}</h3>
+            <div>No Records Available</div>
+        </div>
+    </script>
+    <script id="error" type="x-tmpl-mustache">
+        <div>
+            <h3>ERROR</h3>
+            <div>Check HTTP codes and the console log</div>
+        </div>
+    </script>
+
+  </body>
+</html>

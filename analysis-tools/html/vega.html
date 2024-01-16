@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LIAR Analysis Tool</title>  
+    <script type="text/javascript" src="http://127.0.0.1:9906/static/js/vega.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:9906/static/js/vega-lite.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:9906/static/js/vega-embed.js"></script>
+    </head>
+  
+    <body>
+  
+      <div id="vis"></div>  
+        <script type="text/javascript">
+			function loadScripts(array,callback){
+				let loader = function(src,handler){
+					let script = document.createElement("script");
+					script.src = src;
+					script.onload = script.onreadystatechange = function(){
+						script.onreadystatechange = script.onload = null;
+						handler();
+					}
+					let head = document.getElementsByTagName("head")[0];
+					(head || document.body).appendChild( script );
+				};
+				(function run(){
+					if(array.length!=0){
+						loader(array.shift(), run);
+					}else{
+						callback && callback();
+					}
+				})();	
+			}			
+		
+			const urlParams = new URLSearchParams(window.location.search);
+		    const uuid = urlParams.get('Uuid')
+			const authToken = urlParams.get('AuthToken')
+            const fetchData = async() => {
+                const response = await fetch(`http://127.0.0.1:9906/v1/analysis-tool/get?Uuid=${uuid}`, {headers: {'Authorization': `Bearer ${authToken.replace(/ /g, '+')}`}, 'Content-Type': 'application/json'})
+                const data = await response.json()
+                data.Record.Specification.data.url = data.Record.Specification.data.url.replace('{$Uuid}', uuid)
+                data.Record.Specification.data.url = data.Record.Specification.data.url.replace('{$AuthToken}', authToken.replace(/ /g, '+'))
+                vegaEmbed('#vis', data.Record.Specification, { actions: { source: false, compiled: false, editor: false }});
+                document.getElementById('#vis').setAttribute('title', data.Record.Description ?? '');
+            };
+            fetchData()
+        </script>		
+  </body>
+</html>

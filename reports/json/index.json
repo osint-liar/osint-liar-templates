@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Collected Pages",
+        "description": "A report that contains just the captured web pages",
+        "url": "https://osint-liar.github.io/osint-liar-templates/reports/html/webpages.html"
+    },
+    {
+        "title": "Collected Images",
+        "description": "A report that contains just the captured images",
+        "url": "https://osint-liar.github.io/osint-liar-templates/reports/html/images.html"
+    },
+    {
+        "title": "Collected Video",
+        "description": "A report that contains just the captured videos",
+        "url": "https://osint-liar.github.io/osint-liar-templates/reports/html/videos.html"
+    },
+    {
+        "title": "Collected Messages",
+        "description": "A report that contains just the captured messages",
+        "url": "https://osint-liar.github.io/osint-liar-templates/reports/html/webpage.html"
+    },
+    {
+        "title": "Captured Keywords",
+        "description": "A report that contains the captured content with found keywords",
+        "url": "https://osint-liar.github.io/osint-liar-templates/reports/html/keywords.html"
+    },
+    {
+        "title": "Captured Emails",
+        "description": "A report that contains just the captured sources that have email addresses",
+        "url": "https://osint-liar.github.io/osint-liar-templates/reports/html/emails.html"
+    },
+    {
+        "title": "Missing Person",
+        "description": "A missing persons report",
+        "url": "https://osint-liar.github.io/osint-liar-templates/reports/html/missing_person.html"
+    }
+]

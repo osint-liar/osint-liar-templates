@@ -1,0 +1,127 @@
+<html>
+	<head>
+	  <style>
+		td{
+			border:black thin solid;
+			overflow-wrap: break-word;
+		}
+		table{
+			width:100%;
+			table-layout:fixed;
+
+		}
+	  </style>
+		<style>
+		body, html {
+		  height: 100%;
+		  margin: 0;
+		  font-family: Arial, Helvetica, sans-serif;
+		}
+		</style>
+	</head>
+	<body>
+		<div class='mceTmpl'>
+			<div>
+				<div class="container">
+				  <span class="left-col">
+					<h2>Case Name: {{CaseManagement.Name}}</h2>
+						<img src='{{CaseManagement.SubjectImageData}}' />
+				  </span>
+				  <span class="right-col">
+					<table class="vertical-table">
+					  {{#CaseManagement.SubjectName}}
+					  <tr>
+						<td class="vertical-table-header">Name</td>
+						<td>{{CaseManagement.SubjectName}}</td>
+					  </tr>
+					  {{/CaseManagement.SubjectName}}
+					  <tr>
+						<td class="vertical-table-header">Case Number</td>
+						<td>{{CaseManagement.CaseNumber}}</td>
+					  <tr>
+						<td class="vertical-table-header">Case Worker</td>
+						<td>{{CaseManagement.CaseWorkerName}}</td>
+					  </tr>
+					  <tr>
+						<td class="vertical-table-header">Last Updated On</td>
+						<td>{{CaseManagement.UpdatedOn}}</td>
+					  </tr>
+					  </tr>
+					</table>
+				  </span>
+				</div>
+				<div>Unique Case Identifier: {{CaseManagement.Uuid}}</div>
+				<div>
+					<h1>Collected Images</h1>
+					{{#Image}}
+					<table>
+					<tr><td colspan='2'><img Width="640" Height="480" src="{{WebHost}}v1/screenshot?Uuid={{ContentUuid}}&AuthToken={{AuthToken}}"/></td></tr>
+					<tr><td width='25%' style="width:25%">Created On</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentCreatedOn}}</td></tr>
+					<tr><td width='25%'style="width:25%">Found At</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentUrl}}</td></tr>
+					<tr><td width='25%'style="width:25%">Title</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentTitle}}</td></tr>
+
+					<tr><td width='25%'style="width:25%">ContentCreatedBy</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentCreatedBy}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentCreatedOn</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentCreatedOn}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentUpdatedBy</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentUpdatedBy}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentHash</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentHash}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentHashAlgorithm</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentHashAlgorithm}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentIsValidatedSource</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentIsValidatedSource}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentNote</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentNote}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentReferrer</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentReferrer}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentRelevance</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentRelevance}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentUpdatedOn</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentUpdatedOn}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentUuid</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentUuid}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentLatitude</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentLatitude}}</td></tr>
+
+					<tr><td width='25%'style="width:25%">ContentLongitude</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentLongitude}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentCountry</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentCountry}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentAddress</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentAddress}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentAddress2</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentAddress2}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentCity</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentCity}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentPostalCode</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentPostalCode}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentRegion</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentRegion}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentRadius</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentRadius}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentSize</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentSize}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentDistanceUnit</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentDistanceUnit}}</td></tr>
+
+					<tr><td width='25%'style="width:25%">ContentStartedOn</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentStartedOn}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentEndedOn</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentEndedOn}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentTimeZone</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentTimeZone}}</td></tr>
+
+					<tr><td width='25%'style="width:25%">ContentIsImportant</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentIsImportant}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentSelectorsJson</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentSelectorsJson}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentMimeType</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentMimeType}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentRootUuid</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentRootUuid}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentParentUuid</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentParentUuid}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentAtributesJson</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentAtributesJson}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentEnrichContentIndexDocument</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentEnrichContentIndexDocument}}</td></tr>
+
+					<tr><td width='25%'style="width:25%">ContentLevel</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentLevel}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentFrom</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentFrom}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentTo</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentTo}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentCc</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentCc}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentBcc</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentBcc}}</td></tr>
+
+
+					<tr><td width='25%'style="width:25%">Case Management CreatedBy</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementCreatedBy}}</td></tr>
+					<tr><td width='25%'style="width:25%">Case Management CreatedOn</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementCreatedOn}}</td></tr>
+					<tr><td width='25%'style="width:25%">Case Management Updated By</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementUpdatedBy}}</td></tr>
+					<tr><td width='25%'style="width:25%">Case Management Updated On</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementUpdatedOn}}</td></tr>
+					<tr><td width='25%'style="width:25%">CaseManagementName</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementName}}</td></tr>
+					<tr><td width='25%'style="width:25%">CaseManagementNote</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementNote}}</td></tr>
+					<tr><td width='25%'style="width:25%">CaseManagementUuid</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementUuid}}</td></tr>
+					<tr><td width='25%'style="width:25%">CaseManagementSubjectName</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementSubjectName}}</td></tr>
+					<tr><td width='25%'style="width:25%">CaseManagementCaseNumber</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementCaseNumber}}</td></tr>
+					<tr><td width='25%'style="width:25%">CaseManagementCaseWorkerName</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementCaseWorkerName}}</td></tr>
+
+					<tr><td width='25%'style="width:25%">ContentTypeName</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentTypeName}}</td></tr>
+					<tr><td width='25%'style="width:25%">ContentDomain</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{ContentDomain}}</td></tr>
+					<tr><td width='25%'style="width:25%">CaseManagementNote</td><td width='75%' style="width:75%; overflow-wrap: break-word;">{{CaseManagementNote}}</td></tr>
+
+					</table>
+					{{/Image}}
+				</div>
+			</div>
+		</div>
+	</body>
+<html>

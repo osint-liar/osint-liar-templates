@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Missing Person Report</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      color: #333333;
+      font-size: 24px;
+    }
+    p {
+      color: #555555;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Missing Person Report</h1>
+  <div>
+   <span style="alignment: center">
+        <div>
+            <img width='220' height='210' src='{{CaseManagement.SubjectImageData}}' />
+        </div>
+   </span>
+  </div>
+  <hr>
+  <p><strong>Name:</strong> {{CaseManagement.SubjectName}}</p>
+  <p><strong>Age:</strong> ?</p>
+  <p><strong>Gender:</strong> ?</p>
+  <p><strong>Date of Birth:</strong> ?</p>
+  <p><strong>Height:</strong> ?</p>
+  <p><strong>Weight:</strong> ?</p>
+  <p><strong>Eye Color:</strong> ?</p>
+  <p><strong>Hair Color:</strong> ?</p>
+  <p><strong>Last Seen:</strong> ?</p>
+  <p><strong>Last Known Location:</strong> ?</p>
+  <p><strong>Additional Information:</strong>
+  <p>{{CaseManagement.Note}}</p>
+  <hr>
+  <p>If you have any information regarding the whereabouts of this individual, please contact the local authorities or call the Missing Persons Hotline at XXXXXXX.</p>
+</body>
+</html>
